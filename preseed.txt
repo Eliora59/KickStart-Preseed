@@ -1,0 +1,71 @@
+#choix de la langue d'installation
+d-i debian-installer/locale string fr_FR
+
+# choix du clavier (select indique une liste de choix)
+d-i console-keymaps-at/keymap select fr
+d-i keyboard-configuration/xkb-keymap select fr(latin9)
+
+# choix de l'interface automatique
+d-i netcfg/choose_interface select auto
+
+# configuration du hostname
+d-i netcfg/get_hostname string DEB-SRV
+
+# configuration du domaine
+d-i netcfg/get_domain string overcomputing.net
+
+# Configuration des mirroirs
+d-i mirror/country string manual
+d-i mirror/http/hostname string http.us.debian.org
+d-i mirror/http/directory string /debian
+d-i mirror/http/proxy string
+
+# choix du répertoire dans le mirroir
+d-i mirror/ftp/directory string /debian
+
+d-i mirror/ftp/proxy string
+
+# Type de distribution (stable testing...)
+d-i mirror/suite string stable
+
+# configuration du fuseau horaire
+d-i clock-setup/utc boolean true
+d-i time/zone string Europe/Paris
+
+# Pas de serveur ntp fixé
+d-i clock-setup/ntp boolean false
+
+# choix du partionnement par défaut
+d-i partman-auto/method string regular
+d-i partman-auto/choose_recipe select atomic
+d-i partman/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+
+#configuration du compte root
+d-i passwd/root-password password root
+d-i passwd/root-password-again password root
+
+#configuration d'un autre user
+d-i passwd/user-fullname string theophile
+d-i passwd/username string theophile
+d-i passwd/user-password password root
+d-i passwd/user-password-again password root
+
+# ajout de non-free et contrib dans /etc/apt/sources.list
+d-i apt-setup/non-free boolean true
+d-i apt-setup/contrib boolean true
+
+# Sélection d'une install standard, sans desktop
+tasksel tasksel/first multiselect standard
+
+# ajout des packages supplémentaires
+d-i pkgsel/include string openssh-server build-essential
+
+# installation de grub
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/bootdev  string /dev/sda
+
+# extinction de la machine après installation
+d-i debian-installer/exit/poweroff boolean true
+d-i finish-install/reboot_in_progress note
