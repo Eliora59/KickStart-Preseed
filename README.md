@@ -1,3 +1,3 @@
 # KickStart
 
-This repository contains kickstarts files for Debian (preseed.txt) and RedHat (ks.cfg) for auto install of virtual machines
+This repository contains kickstarts files for Debian (preseed.txt) and RedHat (kickstart.txt) for auto install of virtual machines
