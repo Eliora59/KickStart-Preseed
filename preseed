@@ -93,6 +93,15 @@ d-i apt-setup/non-free boolean true                                         #
 d-i apt-setup/contrib boolean true                                          #
                                                                             #
 #############################################################################
+#--------------------- Eviter le scan d'autres médias ----------------------#
+#############################################################################
+                                                                            #
+d-i apt-setup/cdrom/set-first boolean false                                 #
+d-i apt-setup/cdrom/set-next boolean false                                  #
+d-i apt-setup/cdrom/set-failed boolean false                                #
+popularity-contest popularity-contest/participate boolean false             #
+                                                                            #
+#############################################################################
 #---------------------- Configuration de l'environment ---------------------#
 #############################################################################
                                                                             #
