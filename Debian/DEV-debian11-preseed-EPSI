@@ -1,0 +1,41 @@
+d-i debian-installer/locale string fr_FR
+d-i console-keymaps-at/keymap select fr
+d-i keyboard-configuration/xkb-keymap select fr(latin9)
+d-i netcfg/choose_interface select auto
+d-i netcfg/get_hostname string DEB-SRV
+d-i netcfg/get_domain string overcomputing.net
+d-i mirror/country string manual
+d-i mirror/http/hostname string http.us.debian.org
+d-i mirror/http/directory string /debian
+d-i mirror/http/proxy string
+d-i mirror/suite string stable
+d-i clock-setup/utc boolean true
+d-i time/zone string Europe/Paris
+d-i clock-setup/ntp boolean false
+d-i partman-auto/method string regular
+d-i partman-auto/choose_recipe select atomic
+d-i partman/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+
+d-i passwd/root-login boolean false
+
+d-i passwd/user-fullname string epsi
+d-i passwd/username string epsi
+d-i passwd/user-password password epsi
+d-i passwd/user-password-again password epsi
+
+d-i apt-setup/non-free boolean true
+d-i apt-setup/contrib boolean true
+d-i apt-setup/cdrom/set-first boolean false                                 
+d-i apt-setup/cdrom/set-next boolean false                                  
+d-i apt-setup/cdrom/set-failed boolean false                                
+popularity-contest popularity-contest/participate boolean false             
+tasksel tasksel/first multiselect standard
+d-i pkgsel/include string openssh-server build-essential open-vm-tools vim
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/bootdev string /dev/sda
+d-i debian-installer/exit/poweroff boolean true
+d-i finish-install/reboot_in_progress note
+d-i preseed/late_command string in-target sh -c "echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config"; in-target /etc/init.d/ssh restart
