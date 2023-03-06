@@ -17,10 +17,10 @@ d-i netcfg/get_hostname string DEB-SRV
 d-i netcfg/get_domain string overcomputing.net
 
 ## Configuration des mirroirs
-d-i mirror/country string manual
-d-i mirror/http/hostname string http.us.debian.org
-d-i mirror/http/directory string /debian
-d-i mirror/http/proxy string
+d-i mirror/country string manual  
+d-i mirror/http/hostname string http.us.debian.org  
+d-i mirror/http/directory string /debian  
+d-i mirror/http/proxy string  
 
 ## Permet de sélectionner le type de distribution 
 d-i mirror/suite string stable
