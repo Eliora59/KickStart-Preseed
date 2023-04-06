@@ -28,9 +28,12 @@ d-i apt-setup/cdrom/set-next boolean false
 d-i apt-setup/cdrom/set-failed boolean false                                
 popularity-contest popularity-contest/participate boolean false             
 tasksel tasksel/first multiselect standard
-d-i pkgsel/include string openssh-server build-essential open-vm-tools vim
+
+d-i pkgsel/include string openssh-server build-essential open-vm-tools vim selinux-basics selinux-policy-default auditd
+
 d-i grub-installer/only_debian boolean true
 d-i grub-installer/bootdev string /dev/sda
 d-i debian-installer/exit/poweroff boolean true
 d-i finish-install/reboot_in_progress note
+
 d-i preseed/late_command string in-target sh -c "echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config"; in-target /etc/init.d/ssh restart
