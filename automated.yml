@@ -1,0 +1,10 @@
+---
+- name: "Self Installation of test server"
+  become: yes
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: "Files installation for /etc/issue"
+    copy: 
+      src: issue
+      dest: /etc/issue
